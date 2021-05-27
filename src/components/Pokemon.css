@@ -1,0 +1,12 @@
+
+.pokefight-battle {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.poke-info {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}

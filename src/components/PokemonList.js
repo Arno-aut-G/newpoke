@@ -13,7 +13,7 @@ const PokemonList = ({data}) => {
     return(
         <div>
                 <div>
-                  <h3>List of pokemon</h3>
+                  <h3>Select Your Pokemon</h3>
                 </div>
                 <input
                   type="text"

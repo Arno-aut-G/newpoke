@@ -32,9 +32,12 @@ const App = () => {
               <PokemonList data={data} />
             </Route>
             <Route exact path="/pokemon/:id">
-              <Pokemon />
+              <Pokemon data={data}/>
             </Route>
             <Route exact path="/pokemon/:id/:info">
+              <PokemonInfo />
+            </Route>
+            <Route exact path="/pokemon2/:id/:info">
               <PokemonInfo />
             </Route>
           </Switch>

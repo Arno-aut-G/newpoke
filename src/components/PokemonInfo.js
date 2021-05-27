@@ -29,9 +29,6 @@ const PokemonInfo = () => {
 
   return (
     <div>
-      <div>
-        <botton>Fight</botton>
-      </div>
 
       <div>
         <div>
@@ -84,7 +81,8 @@ const PokemonInfo = () => {
                     </Link>
                   </botton>
                 </p>
-              </div>
+              </div> 
+              
             </div>
           )}
         </div>
