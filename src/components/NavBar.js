@@ -12,12 +12,12 @@ const NavigationBar = () => {
   return (
     <div classname ="header">
       <Navbar bg="warning" expand="lg">
-        <Navbar.Brand href="/"><strong>PokeFight</strong></Navbar.Brand>
+        <Navbar.Brand href="#home">PokeFight</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          {/* <Nav className="mr-auto">
+          <Nav className="mr-auto">
           <Button variant="outline-success"><Link exact to="/">Home</Link></Button>
-          </Nav> */}
+          </Nav>
           {/* <Form inline>
             <FormControl type="text" placeholder="Search" className="mr-sm-2" />
             <Button variant="outline-success">Search</Button>

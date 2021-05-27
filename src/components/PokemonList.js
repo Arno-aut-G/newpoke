@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import '../App.css';
 
 
 const PokemonList = ({data}) => {
@@ -20,7 +19,6 @@ const PokemonList = ({data}) => {
                   type="text"
                   placeholder="Search.."
                   onChange={(event) => setSearch(event.target.value)}
-                  autofocus
                 />
                 {data &&
                   data
