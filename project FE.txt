@@ -1,0 +1,34 @@
+Steps for FE Poke-Fight Project:
+
+DONE 1. npx create-react-app my-app
+DONE 2. cd my-app
+DONE 3. npm start
+DONE 4. npm install reactstrap bootstrap
+DONE 5. npm install react-bootstrap bootstrap@4.6.0: 
+
+POKEFIGHT PROJECT:
+
+======================================================================================================
+
+PART II: React Application
+
+DONE 1. Create a react app
+2. (Optional) Set the proxy with your live API address while in development:
+https://create-react-app.dev/docs/proxying-api-requests-in-development/
+3. Create 3 routes with react-router-dom (https://reacttraining.com/react-
+router/web/api/Route)
+a. / -&gt; Returns all the pokemon names in a list and includes a link to the
+detailed view
+b. /pokemon/:id -&gt; Detailed view with the name, type and base
+c. /pokemon/:id/:info -&gt; Super detailed view with only the names or the types
+and or the bases
+
+4. Each route will gather information from your API
+5. Host your React application on Netlify:
+https://www.netlify.com/blog/2016/07/22/deploy-react-apps-in-less-than-30-seconds/
+
+
+
+
+
+API : https://quiet-falls-70006.herokuapp.com/pokemon
