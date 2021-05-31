@@ -1,5 +1,5 @@
 .footer {
-  background-color: #dda815;
+  background-color: #644b06;
   color: white;
   display: flex;
   align-items: center;
@@ -9,7 +9,7 @@
   height: 7vh;
   width: 100%;
   overflow: hidden;
-  position: fixed;
+  position: relative;
 }
 .copyright {
   margin-top: 0;

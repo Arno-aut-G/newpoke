@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Pokemon from "./components/Pokemon";
 import PokemonInfo from "./components/PokemonInfo";
 import PokemonList from "./components/PokemonList";
+import Home from './components/Home';
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -23,12 +24,14 @@ const App = () => {
   }, []);
 
   return (
-    <>
-      <div className="App">
+      <div className='app'>
         <Router>
           <NavBar />
           <Switch>
-            <Route exact path="/">
+          <Route exact path="/">
+            <Home />
+            </Route>
+            <Route exact path="/pokelist">
               <PokemonList data={data} />
             </Route>
             <Route exact path="/pokemon/:id">
@@ -44,7 +47,7 @@ const App = () => {
         </Router>
         <Footer />
       </div>
-    </>
+    
   );
 };
 

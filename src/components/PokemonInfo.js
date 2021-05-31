@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import "../App.css";
 
 const PokemonInfo = () => {
   let { id } = useParams();
@@ -28,7 +29,7 @@ const PokemonInfo = () => {
   console.log(pokeData);
 
   return (
-    <div>
+    <div className='main-container'>
 
       <div>
         <div>

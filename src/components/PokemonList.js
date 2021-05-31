@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import "../App.css";
 
 
 const PokemonList = ({data}) => {
@@ -11,15 +12,17 @@ const PokemonList = ({data}) => {
       }, []);
 
     return(
-        <div>
-                <div>
-                  <h3>Select Your Pokemon</h3>
-                </div>
-                <input
+        <div className='main-container'>
+                <div className='search-container'>
+                  <lable><h3>Search Your Pokemon</h3></lable>
+                  <input
                   type="text"
                   placeholder="Search.."
                   onChange={(event) => setSearch(event.target.value)}
                 />
+                </div>
+                
+                <div>
                 {data &&
                   data
                     .filter((e) => {
@@ -35,14 +38,16 @@ const PokemonList = ({data}) => {
                     })
                     .map((e, index) => {
                       return (
-                        <p key={index}>
+                        <div className='pokelist'>
+                          <p key={index}>
                           <Link exact to={`/pokemon/${e.id}`}>
-                            {" "}
-                            {e.name.english}{" "}
+                            <p className='poke-name'>{e.name.english}</p>
                           </Link>
                         </p>
+                        </div>
                       );
                     })}
+                </div>
               </div>
     )
 }

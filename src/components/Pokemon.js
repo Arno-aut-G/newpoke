@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./Pokemon.css";
+import "../App.css";
 
 const Pokemon = ({ data }) => {
   console.log(data.length);
@@ -42,83 +43,101 @@ const Pokemon = ({ data }) => {
     /* fetchPokemon2(); */
   }, []);
 
-
   const handleFightBtn = () => {
-    if(pokeData1.base.HP > pokeData2.base.HP && pokeData1.base.Attack > pokeData2.base.Attack) {
-       alert('Player 1 Win')
+    if( pokeData2.base.HP==='' &&  pokeData2.base.Attack === '') {
+      alert('hit play button')
     }
-    else {
-      alert('player  2 won')
+    else if (
+      pokeData1.base.HP > pokeData2.base.HP &&
+      pokeData1.base.Attack > pokeData2.base.Attack
+    ) {
+      alert("Player 1 Win");
+    } else {
+      alert("player  2 won");
     }
-  }
-
+  };
 
   return (
-    <div className="pokefight-battle">
-      <div className="play-btn">
-        <button type='button' onClick={fetchPokemon2} > Play </button>
-      </div>
+    <div className="main-container">
+      <div className="pokefight-battle">
+        <div className="btn">
+          <button type="button" onClick={fetchPokemon2}>
+            {" "}
+            Play{" "}
+          </button>
+        </div>
 
-      <div className="poke-info">
-        <div>
-          {loading1 ? (
-            <h1>Loading</h1>
-          ) : (
-            <div>
-              <div className="selected-poke">
-                <div>
-                  <h4>Player: 1</h4>
-                </div>
-                <div>
-                  <img alt="image" src={getImageURL(id)} width="150" />
-                </div>
+        <div className="poke-field">
+          <div className='poke-info'>
+            {loading1 ? (
+              <h1>Loading</h1>
+            ) : (
+                <div className="selected-poke">
+                  <div>
+                    <h4>Player: 1</h4>
+                  </div>
+                  <div>
+                    <img alt="image" src={getImageURL(id)} width="150" />
+                  </div>
 
+                  <div>
+                    <p>
+                      <Link exact to={`/pokemon/${id}/name`}>
+                        <h2>{pokeData1.name.english}</h2>
+                      </Link>
+                    </p>
+                    <p>
+                      <Link exact to={`/pokemon/${id}/type`}>
+                        <h6>Type</h6>
+                      </Link>
+                    </p>
+                    <p>
+                      <Link exact to={`/pokemon/${id}/base`}>
+                      <h6>Base</h6>
+                      </Link>
+                    </p>
+                  </div>
+                </div>
+            )}
+          </div>
+
+          <div className='poke-info'>
+            {loading2 ? (
+              <h1>Hit play</h1>
+            ) : (
+                <div className="random-poke">
                 <div>
-                  <p>
-                    <Link exact to={`/pokemon/${id}/name`}>
-                      <h4>{pokeData1.name.english}</h4>
-                    </Link>
-                  </p>
-                  <p>
-                    <Link exact to={`/pokemon/${id}/type`}>
-                      Type
-                    </Link>
-                  </p>
-                  <p>
-                    <Link exact to={`/pokemon/${id}/base`}>
-                      Base
-                    </Link>
-                  </p>
+                  <div>
+                    <h4>Player: 2</h4>
+                  </div>
+
+                  <div>
+                    <img alt="image" src={getImageURL(id2)} width="150" />
+                  </div>
+
+                  <div>
+                    <p>
+                      <h2>{pokeData2.name.english} </h2>
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
-        </div>
-
-        <div>
-          {loading2 ? (<h1>Hit play</h1>) :
-          ( <div className="random-poke">
-          <div>
-            <div>
-              <h4>Player: 2</h4>
-            </div>
-
-            <div>
-              <img alt="image" src={getImageURL(id2)} width="150" />
-            </div>
-
-            <div>
-              <p>
-                <h4>{pokeData2.name.english} </h4>
-              </p>
-            </div>
+            )}
           </div>
-        </div> )}
         </div>
-
-      </div>
-      <div className="play-btn">
-      <button type='button' onClick={handleFightBtn} > Fight </button>
+        <div className="btn">
+          <button type="button" onClick={handleFightBtn}>
+            {" "}
+            Fight{" "}
+          </button>
+        </div>
+        <div>
+          <p>
+            <Link exact to={`/pokelist`}>
+              Goback
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );

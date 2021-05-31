@@ -1,3 +1,13 @@
-.header {
-  background-color: #242424 !important;
+.navbar{ 
+  background-color: #644b06;
+  height: 10vh;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+.logo-image img{
+  width: 150px;
+  height: auto;
+  display:inline-block ;
 }
