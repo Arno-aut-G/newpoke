@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
-import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Pokemon from "./components/Pokemon";
-import PokemonInfo from "./components/PokemonInfo";
-import PokemonList from "./components/PokemonList";
+import PokeRouter from "./PokeRouter"
+import { PokeContext } from "./components/PokeContext"
+
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -24,23 +21,7 @@ const App = () => {
 
   return (
     <>
-      <div className="App">
-        <Router>
-          <NavBar />
-          <Switch>
-            <Route exact path="/">
-              <PokemonList data={data} />
-            </Route>
-            <Route exact path="/pokemon/:id">
-              <Pokemon />
-            </Route>
-            <Route exact path="/pokemon/:id/:info">
-              <PokemonInfo />
-            </Route>
-          </Switch>
-        </Router>
-        <Footer />
-      </div>
+      <PokeRouter data={data} />
     </>
   );
 };

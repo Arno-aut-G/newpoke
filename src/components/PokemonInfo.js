@@ -9,8 +9,8 @@ const PokemonInfo = () => {
 
   const [pokeData, setPokeData] = useState();
   const [loading, setLoading] = useState(true);
-  
-    const getImageURL = (pokeId) =>
+
+  const getImageURL = (pokeId) =>
     `https://pokeres.bastionbot.org/images/pokemon/${pokeId}.png`
 
   const fetchPokemon2 = async () => {
@@ -26,7 +26,7 @@ const PokemonInfo = () => {
   }, []);
 
   console.log(pokeData);
-  
+
 
   return (
     <div>
@@ -35,7 +35,7 @@ const PokemonInfo = () => {
       ) : (
         <div>
           <div>
-          <img alt='image' src={getImageURL(id)} width="150" />
+            <img alt='pokemon' src={getImageURL(id)} width="150" />
           </div>
 
           <div>

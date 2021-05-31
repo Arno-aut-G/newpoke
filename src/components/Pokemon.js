@@ -1,14 +1,21 @@
 import { useParams } from "react-router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { PokeContext } from "./PokeContext"
 
-const Pokemon = ({ data }) => {
-  console.log(data);
+const Pokemon = () => {
+  let history = useHistory()
   let { id } = useParams();
   console.log(id);
   const [pokeData, setPokeData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { setPoke } = useContext(PokeContext)
+
+  const handleClick = () => {
+    setPoke(pokeData)
+    history.push("/pokefight")
+  }
 
   const getImageURL = (pokeId) =>
     `https://pokeres.bastionbot.org/images/pokemon/${pokeId}.png`;
@@ -25,6 +32,8 @@ const Pokemon = ({ data }) => {
     fetchPokemon2();
   }, []);
 
+
+
   return (
     <div>
       {loading ? (
@@ -32,7 +41,7 @@ const Pokemon = ({ data }) => {
       ) : (
         <div>
           <div>
-            <img alt="image" src={getImageURL(id)} width="150" />
+            <img alt="pokemon" src={getImageURL(id)} width="150" />
           </div>
 
           <div>
@@ -53,10 +62,15 @@ const Pokemon = ({ data }) => {
             </p>
           </div>
           <div>
+            <button type="button" onClick={handleClick}>
+              POKEFIGHT
+              </button>
+          </div>
+          <div>
             <p>
               <button>
                 <Link exact to="/">
-                  Goback
+                  Go back
                 </Link>
               </button>
             </p>
@@ -68,3 +82,20 @@ const Pokemon = ({ data }) => {
 };
 
 export default Pokemon;
+
+
+// import { useHistory } from "react-router-dom";
+
+// function HomeButton() {
+//   let history = useHistory();
+
+//   function handleClick() {
+//     history.push("/home");
+//   }
+
+//   return (
+//     <button type="button" onClick={handleClick}>
+//       Go home
+//     </button>
+//   );
+// }
