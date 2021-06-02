@@ -8,7 +8,7 @@ import "../App.css";
 
 
 
-const Pokefight = () => {
+const Pokefight = ({ data }) => {
     const { poke } = useContext(PokeContext)
     console.log(poke)
     const [pokeData2, setPokeData2] = useState([]);
@@ -28,12 +28,12 @@ const Pokefight = () => {
     };
 
     const handleFightBtn = () => {
-        if (pokeData2.base.HP === '' && pokeData2.base.Attack === '') {
+        if (poke.base.HP === '' && pokeData2.base.Attack === '') {
             alert('hit play button')
         }
         else if (
-            pokeData1.base.HP > pokeData2.base.HP &&
-            pokeData1.base.Attack > pokeData2.base.Attack
+            poke.base.HP > pokeData2.base.HP &&
+            poke.base.Attack > pokeData2.base.Attack
         ) {
             alert("Player 1 Win");
         } else {
@@ -58,36 +58,32 @@ const Pokefight = () => {
 
                 <div className="poke-field">
                     <div className='poke-info'>
-                        {loading1 ? (
-                            <h1>Loading</h1>
-                        ) : (
-                            <div className="selected-poke">
-                                <div>
-                                    <h4>Player: 1</h4>
-                                </div>
-                                <div>
-                                    <img alt="image" src={getImageURL(id)} width="150" />
-                                </div>
-
-                                <div>
-                                    <p>
-                                        <Link exact to={`/pokemon/${id}/name`}>
-                                            <h2>{pokeData1.name.english}</h2>
-                                        </Link>
-                                    </p>
-                                    <p>
-                                        <Link exact to={`/pokemon/${id}/type`}>
-                                            <h6>Type</h6>
-                                        </Link>
-                                    </p>
-                                    <p>
-                                        <Link exact to={`/pokemon/${id}/base`}>
-                                            <h6>Base</h6>
-                                        </Link>
-                                    </p>
-                                </div>
+                        <div className="selected-poke">
+                            <div>
+                                <h4>Player: 1</h4>
                             </div>
-                        )}
+                            <div>
+                                <img alt="image" src={getImageURL(poke.id)} width="150" />
+                            </div>
+
+                            <div>
+                                <p>
+                                    <Link exact to={`/pokemon/${poke.id}/name`}>
+                                        <h2>{poke.name.english}</h2>
+                                    </Link>
+                                </p>
+                                <p>
+                                    <Link exact to={`/pokemon/${poke.id}/type`}>
+                                        <h6>Type</h6>
+                                    </Link>
+                                </p>
+                                <p>
+                                    <Link exact to={`/pokemon/${poke.id}/base`}>
+                                        <h6>Base</h6>
+                                    </Link>
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
                     <div className='poke-info'>

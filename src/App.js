@@ -8,6 +8,7 @@ import Pokemon from "./components/Pokemon";
 import PokemonInfo from "./components/PokemonInfo";
 import PokemonList from "./components/PokemonList";
 import Home from './components/Home';
+import PokeRouter from './PokeRouter'
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -24,30 +25,32 @@ const App = () => {
   }, []);
 
   return (
-      <div className='app'>
-        <Router>
-          <NavBar />
-          <Switch>
-          <Route exact path="/">
-            <Home />
-            </Route>
-            <Route exact path="/pokelist">
-              <PokemonList data={data} />
-            </Route>
-            <Route exact path="/pokemon/:id">
-              <Pokemon data={data}/>
-            </Route>
-            <Route exact path="/pokemon/:id/:info">
-              <PokemonInfo />
-            </Route>
-            <Route exact path="/pokemon2/:id/:info">
-              <PokemonInfo />
-            </Route>
-          </Switch>
-        </Router>
-        <Footer />
-      </div>
-    
+
+    <PokeRouter data={data} />
+    // <div className='app'>
+    //   <Router>
+    //     <NavBar />
+    //     <Switch>
+    //     <Route exact path="/">
+    //       <Home />
+    //       </Route>
+    //       <Route exact path="/pokelist">
+    //         <PokemonList data={data} />
+    //       </Route>
+    //       <Route exact path="/pokemon/:id">
+    //         <Pokemon data={data}/>
+    //       </Route>
+    //       <Route exact path="/pokemon/:id/:info">
+    //         <PokemonInfo />
+    //       </Route>
+    //       <Route exact path="/pokemon2/:id/:info">
+    //         <PokemonInfo />
+    //       </Route>
+    //     </Switch>
+    //   </Router>
+    //   <Footer />
+    // </div>
+
   );
 };
 
