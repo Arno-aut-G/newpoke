@@ -25,8 +25,9 @@ const App = () => {
   }, []);
 
   return (
-
-    <PokeRouter data={data} />
+    <div className='app'>
+      <PokeRouter data={data} />
+    </div>
     // <div className='app'>
     //   <Router>
     //     <NavBar />

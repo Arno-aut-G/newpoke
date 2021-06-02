@@ -82,8 +82,8 @@ const PokemonInfo = () => {
                     </Link>
                   </botton>
                 </p>
-              </div> 
-              
+              </div>
+
             </div>
           )}
         </div>

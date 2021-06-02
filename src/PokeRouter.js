@@ -33,7 +33,9 @@ const PokeRouter = ({ data }) => {
                             <Route exact path="/pokemon/:id/:info">
                                 <PokemonInfo />
                             </Route>
-                            <Route exact path="/pokefight" component={Pokefight} data={data} />
+                            <Route exact path="/pokefight">
+                                <Pokefight data={data} />
+                            </Route>
                         </Switch>
                     </PokeContext.Provider>
                     <Footer />
