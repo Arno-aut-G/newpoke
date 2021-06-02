@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 import { PokeContext } from "./PokeContext"
-import "./Pokemon.css"
+//import "./Pokemon.css"
 import "../App.css";
 
 const Pokemon = () => {
@@ -37,7 +37,7 @@ const Pokemon = () => {
 
 
   return (
-    <div>
+    <div className='main-container'>
       {loading ? (
         <h1>Loading</h1>
       ) : (

@@ -49,127 +49,161 @@ const Pokefight = ({ data }) => {
     };
 
     const handleFightBtn = () => {
-        if (pokeData.base.HP === '' && pokeData2.base.Attack === '') {
-            alert('hit play button')
-        }
-        else if (
-            pokeData.base.HP > pokeData2.base.HP &&
-            pokeData.base.Attack > pokeData2.base.Attack
-        ) {
-            alert("Player 1 Win");
-        } else {
-            alert("player  2 won");
-        }
-    };
+        const att = ['HP', 'Attack', 'Defense', 'Sp. Attack', 'Sp. Defense', 'Speed']
+        let x = 0
+        let y = 0
+        att.map(e => {
+            let sign = Math.sign(pokeData.base[e] - pokeData2.base[e])
+            if (sign === 1) { x++ } else if (sign === -1) { y++ }
+        })
+        if (x > y) { alert(`${pokeData.name.english} wins`) } else if (x < y) { alert(`${pokeData2.name.english} wins`) } else { alert('tie') }
+    }
 
-    // const compareStrength = (pokeData, pokeData2) => {
-    //     const att = ['HP', 'Attack', 'Defense', 'Sp. Attack', 'Sp. Defense', 'Speed']
-    //     let x = 0
-    //     let y = 0
-    //     att.map(e => {
-    //     let sign = Math.sign(pokeData.base[e]- pokeData2.base[e])
-    //     if (sign === 1){x++} else if (sign === -1) {y++}})
-    //     if (x > y) {return 'pokeData wins'} else if (x < y) {return 'pokeData2 wins'} else { return'tie'}
+    // const handleFightBtn = () => {
+    //     if (pokeData.base.HP === '' && pokeData2.base.Attack === '') {
+    //         alert('hit play button')
     //     }
+    //     else if (
+    //         pokeData.base.HP > pokeData2.base.HP &&
+    //         pokeData.base.Attack > pokeData2.base.Attack
+    //     ) {
+    //         alert("Player 1 Win");
+    //     } else {
+    //         alert("player  2 won");
+    //     }
+    // };
 
-    useEffect(() => {
-        fetchPokemon2()
-    }, []);
+
+
+    // useEffect(() => {
+    //     fetchPokemon2()
+    // }, []);
 
     return (
         <>
-            <div className="main-container">
-                <div className="pokefight-battle">
-                    <div className="btn">
-                        <button type="button" onClick={fetchPokemon2}>
-                            {" "}
-            New Rival{" "}
-                        </button>
-                    </div>
-
-                    <div className="poke-field">
-                        <div className='poke-info'>
-                            <div className="selected-poke">
-                                <div>
-                                    <h4>Player: 1</h4>
-                                </div>
-                                <div>
-                                    <img alt="image" src={getImageURL(pokeData.id)} width="150" />
-                                </div>
-
-                                <div>
-                                    <p>
-                                        <Link exact to={`/pokemon/${pokeData.id}/name`}>
-                                            <h2>{pokeData.name.english}</h2>
-                                        </Link>
-                                    </p>
-                                    <p>
-                                        <Link exact to={`/pokemon/${pokeData.id}/type`}>
-                                            <h6>Type</h6>
-                                        </Link>
-                                    </p>
-                                    <p>
-                                        <Link exact to={`/pokemon/${pokeData.id}/base`}>
-                                            <h6>Base</h6>
-                                        </Link>
-                                    </p>
-                                </div>
+            {pokeData.name ?
+                <>
+                    <div className="main-container">
+                        <div className="pokefight-battle">
+                            <div className="btn">
+                                <button type="button" onClick={fetchPokemon2}>
+                                    {" "}
+            GeETt RiVaAl{" "}
+                                </button>
+                                {/* </div>
+                    <div className="btn"> */}
+                                <button type="button" onClick={handleFightBtn}>
+                                    {" "}
+            FIGHT{" "}
+                                </button>
                             </div>
-                        </div>
 
-                        <div className='poke-info'>
-                            {loading2 ? (
-                                <h1>Hit play</h1>
-                            ) : (
-                                <div className="random-poke">
-                                    <div>
+                            <div className="poke-field">
+                                <div className='poke-info'>
+                                    <div className="selected-poke">
                                         <div>
-                                            <h4>Player: 2</h4>
+                                            <h4>Player: 1</h4>
+                                        </div>
+                                        <div>
+                                            <img alt="image" src={getImageURL(pokeData.id)} width="150" />
                                         </div>
 
                                         <div>
-                                            <img alt="image" src={getImageURL(pokeData2.id)} width="150" />
-                                        </div>
 
-                                        <div>
-                                            <p>
-                                                <Link exact to={`/pokemon/${pokeData2.id}/name`}>
-                                                    <h2>{pokeData2.name.english}</h2>
-                                                </Link>
-                                            </p>
-                                            <p>
-                                                <Link exact to={`/pokemon/${pokeData2.id}/type`}>
-                                                    <h6>Type</h6>
-                                                </Link>
-                                            </p>
-                                            <p>
-                                                <Link exact to={`/pokemon/${pokeData2.id}/base`}>
-                                                    <h6>Base</h6>
-                                                </Link>
-                                            </p>
+                                            <h2>{pokeData.name.english}</h2>
+                                            <div>
+                                                <h4>Name in Different Languages</h4>
+                                                <p>Japanese Name: {pokeData.name.japanese}</p>
+                                                <p>Chinese Name: {pokeData.name.chinese}</p>
+                                                <p>French Name: {pokeData.name.french}</p>
+                                            </div>
+
+                                            <h6>Type</h6>
+                                            <div>
+                                                {pokeData.type.map((e) => (
+                                                    <p>{e}</p>
+                                                ))}
+                                            </div>
+
+                                            <div>
+                                                <h4>List of Base</h4>
+                                                <p>HP: {pokeData.base.HP}</p>
+                                                <p>Attack: {pokeData.base.Attack}</p>
+                                                <p>Defense: {pokeData.base.Defense}</p>
+                                                <p>Sp. Attack: {pokeData.base["Sp. Attack"]}</p>
+                                                <p>Sp. Defense: {pokeData.base["Sp. Defense"]}</p>
+                                                <p>Speed: {pokeData.base.Speed}</p>
+                                            </div>
+
+
+
                                         </div>
                                     </div>
                                 </div>
-                            )}
+
+                                <div className='poke-info'>
+                                    {loading2 ? (
+                                        <h1>GeET a RiIiVaL</h1>
+                                    ) : (
+                                        <div className="random-poke">
+                                            <div>
+                                                <div>
+                                                    <h4>Player: 2</h4>
+                                                </div>
+
+                                                <div>
+                                                    <img alt="image" src={getImageURL(pokeData2.id)} width="150" />
+                                                </div>
+
+                                                <div>
+
+                                                    <h2>{pokeData2.name.english}</h2>
+                                                    <div>
+                                                        <h4>Name in Different Languages</h4>
+                                                        <p>Japanese Name: {pokeData2.name.japanese}</p>
+                                                        <p>Chinese Name: {pokeData2.name.chinese}</p>
+                                                        <p>French Name: {pokeData2.name.french}</p>
+                                                    </div>
+
+                                                    <h6>Type</h6>
+                                                    <div>
+                                                        {pokeData2.type.map((e) => (
+                                                            <p>{e}</p>
+                                                        ))}
+                                                    </div>
+
+                                                    <div>
+                                                        <h4>List of Base</h4>
+                                                        <p>HP: {pokeData2.base.HP}</p>
+                                                        <p>Attack: {pokeData2.base.Attack}</p>
+                                                        <p>Defense: {pokeData2.base.Defense}</p>
+                                                        <p>Sp. Attack: {pokeData2.base["Sp. Attack"]}</p>
+                                                        <p>Sp. Defense: {pokeData2.base["Sp. Defense"]}</p>
+                                                        <p>Speed: {pokeData2.base.Speed}</p>
+                                                    </div>
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <div>
+                                <p>
+                                    <Link exact to={`/pokelist`}>
+                                        GototheZOO
+            </Link>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    <div className="btn">
-                        <button type="button" onClick={handleFightBtn}>
-                            {" "}
-            Fight{" "}
-                        </button>
-                    </div>
-                    <div>
-                        <p>
-                            <Link exact to={`/pokelist`}>
-                                Goback
-            </Link>
-                        </p>
-                    </div>
-                </div>
-            </div>
+                </>
+                :
+                <Redirect to="/pokelist" />
 
-
+            }
         </>
     )
 

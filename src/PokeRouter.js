@@ -1,7 +1,6 @@
 import './App.css';
 import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Pokemon from "./components/Pokemon";
 import PokemonInfo from "./components/PokemonInfo";
 import PokemonList from "./components/PokemonList";
@@ -38,7 +37,6 @@ const PokeRouter = ({ data }) => {
                             </Route>
                         </Switch>
                     </PokeContext.Provider>
-                    <Footer />
                 </Router>
 
             </div>

@@ -1,13 +1,19 @@
-.app {
-  text-align: center;
-}
-
-.main-container {
+body {
+  min-height: 100%;
   background-image: url('https://wallpapercave.com/wp/cqhO8rQ.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
+}
+
+.app {
+  text-align: center;
+}
+
+.main-container {
+  height: 100%;
+
 }
 
 .search-container {
