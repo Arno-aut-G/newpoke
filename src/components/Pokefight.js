@@ -62,6 +62,16 @@ const Pokefight = ({ data }) => {
         }
     };
 
+    // const compareStrength = (pokeData, pokeData2) => {
+    //     const att = ['HP', 'Attack', 'Defense', 'Sp. Attack', 'Sp. Defense', 'Speed']
+    //     let x = 0
+    //     let y = 0
+    //     att.map(e => {
+    //     let sign = Math.sign(pokeData.base[e]- pokeData2.base[e])
+    //     if (sign === 1){x++} else if (sign === -1) {y++}})
+    //     if (x > y) {return 'pokeData wins'} else if (x < y) {return 'pokeData2 wins'} else { return'tie'}
+    //     }
+
     useEffect(() => {
         fetchPokemon2()
     }, []);
