@@ -12,14 +12,14 @@ import { useState } from "react"
 
 
 const PokeRouter = ({ data }) => {
-    const [poke, setPoke] = useState({})
+    const [pokeData, setPoke] = useState({})
 
     return (
         <>
             <div className="App">
                 <Router>
                     <NavBar />
-                    <PokeContext.Provider value={{ poke, setPoke }}>
+                    <PokeContext.Provider value={{ pokeData, setPoke }}>
                         <Switch>
                             <Route exact path="/">
                                 <Home />

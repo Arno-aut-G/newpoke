@@ -68,100 +68,97 @@ const Pokefight = ({ data }) => {
 
     return (
         <>
-            {pokeData ?
-                <>
-                    <div className="main-container">
-                        <div className="pokefight-battle">
-                            <div className="btn">
-                                <button type="button" onClick={fetchPokemon2}>
-                                    {" "}
+            <div className="main-container">
+                <div className="pokefight-battle">
+                    <div className="btn">
+                        <button type="button" onClick={fetchPokemon2}>
+                            {" "}
             New Rival{" "}
-                                </button>
-                            </div>
+                        </button>
+                    </div>
 
-                            <div className="poke-field">
-                                <div className='poke-info'>
-                                    <div className="selected-poke">
+                    <div className="poke-field">
+                        <div className='poke-info'>
+                            <div className="selected-poke">
+                                <div>
+                                    <h4>Player: 1</h4>
+                                </div>
+                                <div>
+                                    <img alt="image" src={getImageURL(pokeData.id)} width="150" />
+                                </div>
+
+                                <div>
+                                    <p>
+                                        <Link exact to={`/pokemon/${pokeData.id}/name`}>
+                                            <h2>{pokeData.name.english}</h2>
+                                        </Link>
+                                    </p>
+                                    <p>
+                                        <Link exact to={`/pokemon/${pokeData.id}/type`}>
+                                            <h6>Type</h6>
+                                        </Link>
+                                    </p>
+                                    <p>
+                                        <Link exact to={`/pokemon/${pokeData.id}/base`}>
+                                            <h6>Base</h6>
+                                        </Link>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='poke-info'>
+                            {loading2 ? (
+                                <h1>Hit play</h1>
+                            ) : (
+                                <div className="random-poke">
+                                    <div>
                                         <div>
-                                            <h4>Player: 1</h4>
+                                            <h4>Player: 2</h4>
                                         </div>
+
                                         <div>
-                                            <img alt="image" src={getImageURL(pokeData.id)} width="150" />
+                                            <img alt="image" src={getImageURL(pokeData2.id)} width="150" />
                                         </div>
 
                                         <div>
                                             <p>
-                                                <Link exact to={`/pokemon/${pokeData.id}/name`}>
-                                                    <h2>{pokeData.name.english}</h2>
+                                                <Link exact to={`/pokemon/${pokeData2.id}/name`}>
+                                                    <h2>{pokeData2.name.english}</h2>
                                                 </Link>
                                             </p>
                                             <p>
-                                                <Link exact to={`/pokemon/${pokeData.id}/type`}>
+                                                <Link exact to={`/pokemon/${pokeData2.id}/type`}>
                                                     <h6>Type</h6>
                                                 </Link>
                                             </p>
                                             <p>
-                                                <Link exact to={`/pokemon/${pokeData.id}/base`}>
+                                                <Link exact to={`/pokemon/${pokeData2.id}/base`}>
                                                     <h6>Base</h6>
                                                 </Link>
                                             </p>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div className='poke-info'>
-                                    {loading2 ? (
-                                        <h1>Hit play</h1>
-                                    ) : (
-                                        <div className="random-poke">
-                                            <div>
-                                                <div>
-                                                    <h4>Player: 2</h4>
-                                                </div>
-
-                                                <div>
-                                                    <img alt="image" src={getImageURL(pokeData2.id)} width="150" />
-                                                </div>
-
-                                                <div>
-                                                    <p>
-                                                        <Link exact to={`/pokemon/${pokeData2.id}/name`}>
-                                                            <h2>{pokeData2.name.english}</h2>
-                                                        </Link>
-                                                    </p>
-                                                    <p>
-                                                        <Link exact to={`/pokemon/${pokeData2.id}/type`}>
-                                                            <h6>Type</h6>
-                                                        </Link>
-                                                    </p>
-                                                    <p>
-                                                        <Link exact to={`/pokemon/${pokeData2.id}/base`}>
-                                                            <h6>Base</h6>
-                                                        </Link>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                            <div className="btn">
-                                <button type="button" onClick={handleFightBtn}>
-                                    {" "}
-            Fight{" "}
-                                </button>
-                            </div>
-                            <div>
-                                <p>
-                                    <Link exact to={`/pokelist`}>
-                                        Goback
-            </Link>
-                                </p>
-                            </div>
+                            )}
                         </div>
                     </div>
-                </>
-                : <Redirect to="/pokelist" />}
+                    <div className="btn">
+                        <button type="button" onClick={handleFightBtn}>
+                            {" "}
+            Fight{" "}
+                        </button>
+                    </div>
+                    <div>
+                        <p>
+                            <Link exact to={`/pokelist`}>
+                                Goback
+            </Link>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
 
         </>
     )
