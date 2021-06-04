@@ -44,7 +44,7 @@ const Pokemon = ({ data }) => {
   }, []);
 
   const handleFightBtn = () => {
-    if( pokeData2.base.HP==='' &&  pokeData2.base.Attack === '') {
+    if( pokeData2.base.HP === '' ||  pokeData2.base.Attack === '') {
       alert('hit play button')
     }
     else if (
@@ -60,6 +60,7 @@ const Pokemon = ({ data }) => {
   return (
     <div className="main-container">
       <div className="pokefight-battle">
+      <h4>Hit play to get fight partner</h4>
         <div className="btn">
           <button type="button" onClick={fetchPokemon2}>
             {" "}
@@ -74,26 +75,26 @@ const Pokemon = ({ data }) => {
             ) : (
                 <div className="selected-poke">
                   <div>
-                    <h4>Player: 1</h4>
+                    <h3> Player: 1</h3>
                   </div>
-                  <div>
+                  <div className='poke-image'>
                     <img alt="image" src={getImageURL(id)} width="150" />
                   </div>
 
-                  <div>
+                  <div >
                     <p>
                       <Link exact to={`/pokemon/${id}/name`}>
-                        <h2>{pokeData1.name.english}</h2>
+                        <h2 className='poke-info-link'>{pokeData1.name.english}</h2>
                       </Link>
                     </p>
                     <p>
                       <Link exact to={`/pokemon/${id}/type`}>
-                        <h6>Type</h6>
+                        <h6 className='poke-info-link'>Type</h6>
                       </Link>
                     </p>
                     <p>
                       <Link exact to={`/pokemon/${id}/base`}>
-                      <h6>Base</h6>
+                      <h6 className='poke-info-link'>Base</h6>
                       </Link>
                     </p>
                   </div>
@@ -103,7 +104,7 @@ const Pokemon = ({ data }) => {
 
           <div className='poke-info'>
             {loading2 ? (
-              <h1>Hit play</h1>
+              <h3>Player: 2</h3>
             ) : (
                 <div className="random-poke">
                 <div>
@@ -111,13 +112,13 @@ const Pokemon = ({ data }) => {
                     <h4>Player: 2</h4>
                   </div>
 
-                  <div>
+                  <div className='poke-image'>
                     <img alt="image" src={getImageURL(id2)} width="150" />
                   </div>
 
                   <div>
                     <p>
-                      <h2>{pokeData2.name.english} </h2>
+                      <h2 className='poke-info-link'>{pokeData2.name.english} </h2>
                     </p>
                   </div>
                 </div>

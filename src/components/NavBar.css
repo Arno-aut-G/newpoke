@@ -1,13 +1,20 @@
-.navbar{ 
+/* .navbar{ 
   background-color: #644b06;
   height: 10vh;
   display: flex;
   overflow: hidden;
   position: relative;
+} */
+
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  height: 15vh;
+  background-color: #644b06;
 }
 
 .logo-image img{
   width: 150px;
-  height: auto;
-  display:inline-block ;
+  height: 100px;
+  display:flex;
 }

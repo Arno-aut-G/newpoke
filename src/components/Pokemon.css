@@ -22,7 +22,20 @@
 }
 
 .poke-info {
-    border: 2px solid black ;
-    border-radius: 10px;
     padding: 2rem;
+}
+
+.poke-info-link{
+    color: black;
+  font-weight: bold;
+}
+
+.poke-image img {
+    padding: 1rem;
+    animation: rotatepoke 1s linear infinite;
+}
+
+@keyframes rotatepoke{
+    from{ transform: rotate(0deg);}
+    to{ transform: rotate(90deg);}
 }
